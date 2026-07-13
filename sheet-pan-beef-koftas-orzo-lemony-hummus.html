@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheet Pan Beef Koftas with Orzo and Lemony Hummus Sauce — Recipe Card</title>
+<!--
+  ============================================================================
+  STANDARD RECIPE FORMAT — v2
+  ============================================================================
+  Source: Adapted from Hello Fresh
+  Shawarma Spice Blend is broken into constituent spices (see Notes).
+  Category: Beef & Pork
+  Filename: sheet-pan-beef-koftas-orzo-lemony-hummus.html
+  ============================================================================
+-->
+<style>
+  :root {
+    --paper: #F3F4EF;
+    --paper-panel: #EAE7DC;
+    --ink: #2B2A28;
+    --ink-soft: #6B675E;
+    --rule: #D6D2C4;
+    --herb: #3F5D4A;
+    --herb-soft: #E4EAE3;
+    --spice: #A8722E;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .recipe { max-width: 980px; margin: 0 auto; padding: 40px 24px 64px; }
+
+  .recipe-head { border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 32px; }
+
+  h1 {
+    margin: 0 0 8px;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .dek { margin: 0 0 20px; max-width: 60ch; color: var(--ink-soft); font-size: 1.02rem; }
+
+  .recipe-photo {
+    margin: 0 0 20px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper-panel);
+  }
+  .recipe-photo img {
+    display: block;
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+  }
+  .recipe-photo figcaption {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 20px; padding: 0; }
+  .meta-bar li { display: flex; flex-direction: column; gap: 2px; padding: 8px 16px; background: var(--paper-panel); border-radius: 3px; min-width: 84px; }
+  .meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .meta-value { font-family: "SF Mono", "Consolas", monospace; font-size: 0.92rem; font-weight: 600; }
+
+  .equipment { margin: 0 0 20px; }
+  .equipment-label { margin: 0 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+  .equipment-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .equipment-list li {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 14px; background: var(--paper-panel);
+    border: 1px solid var(--rule); border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .equipment-list li::before { content: "—"; color: var(--herb); font-weight: 700; }
+
+  .scale-toggle-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .scale-toggle-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+
+  .scale-toggle { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+  .scale-btn {
+    appearance: none; border: none; background: transparent;
+    padding: 8px 18px; font-family: inherit; font-size: 0.85rem; font-weight: 600;
+    color: var(--ink); cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .scale-btn + .scale-btn { border-left: 1.5px solid var(--ink); }
+  .scale-btn.active { background: var(--ink); color: var(--paper); }
+  .scale-btn:focus-visible { outline: 2px solid var(--herb); outline-offset: -2px; }
+
+  .recipe-body { display: grid; grid-template-columns: minmax(240px, 34%) 1fr; gap: 8px 48px; align-items: start; }
+  .recipe-body h2 { margin: 0 0 16px; font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 1.3rem; font-weight: 600; }
+
+  .ingredients { border-right: 1px solid var(--rule); padding-right: 32px; position: sticky; top: 24px; }
+
+  .group-label { margin: 20px 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--herb); font-weight: 700; }
+  .group-label:first-of-type { margin-top: 0; }
+
+  ul.ingredient-list { list-style: none; margin: 0 0 8px; padding: 0; }
+  .ingredient { display: flex; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--rule); }
+  .ingredient .qty { flex: 0 0 auto; min-width: 132px; font-family: "SF Mono", "Consolas", monospace; font-size: 0.86rem; font-weight: 600; }
+  .ingredient .qty .weight { color: var(--spice); font-weight: 500; }
+  .ingredient .name { font-size: 0.95rem; }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .step-group-label { margin: 24px 0 10px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--herb); font-weight: 700; }
+  .step-group-label:first-of-type { margin-top: 0; }
+  .step { counter-increment: step; display: flex; gap: 16px; margin-bottom: 20px; }
+  .step-num {
+    flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%;
+    background: var(--herb); color: var(--herb-soft); display: flex;
+    align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700;
+  }
+  .step p { margin: 2px 0 0; }
+  .ing-ref { font-weight: 600; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+
+  .recipe-foot { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 0.88rem; }
+  .recipe-foot .notes { margin: 0 0 8px; color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .recipe-body { grid-template-columns: 1fr; }
+    .ingredients { border-right: none; border-bottom: 2px solid var(--ink); padding-right: 0; padding-bottom: 24px; margin-bottom: 24px; position: static; }
+    .meta-bar li { min-width: 72px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .scale-toggle-wrap { display: none; }
+    .ingredients { position: static; border-right: 1px solid #999; }
+  }
+</style>
+</head>
+<body>
+
+<article class="recipe" id="recipe">
+
+  <header class="recipe-head">
+    <h1>Sheet Pan Beef Koftas with Orzo and Lemony Hummus Sauce</h1>
+    <p class="dek">Spiced beef koftas roasted on a sheet pan with zucchini, bell pepper, and onion — served over lemony orzo with a creamy hummus and garlic sauce.</p>
+
+    <figure class="recipe-photo">
+      <img src="sheet-pan-beef-koftas-orzo-lemony-hummus.jpg"
+           alt="Sheet pan beef koftas with orzo, roasted vegetables, and lemony hummus sauce"
+           onerror="this.closest('figure').remove()">
+    </figure>
+
+    <ul class="meta-bar">
+      <li><span class="meta-label">Prep</span><span class="meta-value">10 min</span></li>
+      <li><span class="meta-label">Cook</span><span class="meta-value">25 min</span></li>
+      <li><span class="meta-label">Total</span><span class="meta-value">35 min</span></li>
+      <li><span class="meta-label">Servings</span><span class="meta-value" id="servings-value" data-servings-base="2">2</span></li>
+    </ul>
+
+    <div class="equipment">
+      <p class="equipment-label">Equipment</p>
+      <ul class="equipment-list">
+        <li>Rimmed baking sheet</li>
+        <li>Parchment paper</li>
+        <li>Medium pot</li>
+        <li>Box grater</li>
+        <li>Zester</li>
+        <li>Strainer</li>
+      </ul>
+    </div>
+
+    <div class="scale-toggle-wrap">
+      <span class="scale-toggle-label">Scale recipe</span>
+      <div class="scale-toggle" role="group" aria-label="Recipe scale">
+        <button type="button" class="scale-btn" data-scale="0.5">Half</button>
+        <button type="button" class="scale-btn active" data-scale="1">1×</button>
+        <button type="button" class="scale-btn" data-scale="2">Double</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <section class="ingredients" aria-label="Ingredients">
+      <h2>Ingredients</h2>
+
+      <p class="group-label">Produce</p>
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="1" data-unit="medium" data-unit-plural="medium" data-weight="120" data-weight-unit="g">
+          <span class="qty">1 medium <span class="weight">(120 g)</span></span>
+          <span class="name">red onion, half grated / half diced</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="medium" data-unit-plural="medium" data-weight="200" data-weight-unit="g">
+          <span class="qty">1 medium <span class="weight">(200 g)</span></span>
+          <span class="name">zucchini, cut into ½-inch rounds</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="" data-unit-plural="" data-weight="150" data-weight-unit="g">
+          <span class="qty">1 <span class="weight">(150 g)</span></span>
+          <span class="name">sweet bell pepper, cut into 1-inch pieces</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="" data-unit-plural="" data-weight="100" data-weight-unit="g">
+          <span class="qty">1 <span class="weight">(100 g)</span></span>
+          <span class="name">lemon, zested and juiced</span>
+        </li>
+        <li class="ingredient" data-amount="4" data-unit="clove" data-unit-plural="cloves" data-weight="20" data-weight-unit="g">
+          <span class="qty">4 cloves <span class="weight">(20 g)</span></span>
+          <span class="name">garlic, minced or grated</span>
+        </li>
+      </ul>
+
+      <p class="group-label">Koftas</p>
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="250" data-unit="g" data-unit-plural="g" data-weight="250" data-weight-unit="g">
+          <span class="qty">250 g <span class="weight">(250 g)</span></span>
+          <span class="name">lean ground beef</span>
+        </li>
+        <li class="ingredient" data-amount="0.25" data-unit="cup" data-unit-plural="cups" data-weight="25" data-weight-unit="g">
+          <span class="qty">1/4 cup <span class="weight">(25 g)</span></span>
+          <span class="name">panko breadcrumbs</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="tsp" data-unit-plural="tsp" data-weight="5" data-weight-unit="g">
+          <span class="qty">1 tsp <span class="weight">(5 g)</span></span>
+          <span class="name">garlic salt</span>
+        </li>
+      </ul>
+
+      <p class="group-label">Shawarma Spice Blend</p>
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="1" data-unit="tsp" data-unit-plural="tsp" data-weight="2.5" data-weight-unit="g">
+          <span class="qty">1 tsp <span class="weight">(2.5 g)</span></span>
+          <span class="name">ground cumin</span>
+        </li>
+        <li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="1" data-weight-unit="g">
+          <span class="qty">1/2 tsp <span class="weight">(1 g)</span></span>
+          <span class="name">ground coriander</span>
+        </li>
+        <li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="1" data-weight-unit="g">
+          <span class="qty">1/2 tsp <span class="weight">(1 g)</span></span>
+          <span class="name">smoked paprika</span>
+        </li>
+        <li class="ingredient" data-amount="0.25" data-unit="tsp" data-unit-plural="tsp" data-weight="0.5" data-weight-unit="g">
+          <span class="qty">1/4 tsp <span class="weight">(0.5 g)</span></span>
+          <span class="name">ground turmeric</span>
+        </li>
+        <li class="ingredient" data-amount="0.25" data-unit="tsp" data-unit-plural="tsp" data-weight="0.5" data-weight-unit="g">
+          <span class="qty">1/4 tsp <span class="weight">(0.5 g)</span></span>
+          <span class="name">ground cinnamon</span>
+        </li>
+        <li class="ingredient" data-amount="0.25" data-unit="tsp" data-unit-plural="tsp" data-weight="0.5" data-weight-unit="g">
+          <span class="qty">1/4 tsp <span class="weight">(0.5 g)</span></span>
+          <span class="name">ground allspice</span>
+        </li>
+        <li class="ingredient" data-amount="0.125" data-unit="tsp" data-unit-plural="tsp" data-weight="0.3" data-weight-unit="g">
+          <span class="qty">1/8 tsp <span class="weight">(0.3 g)</span></span>
+          <span class="name">ground cardamom</span>
+        </li>
+        <li class="ingredient" data-amount="0.125" data-unit="tsp" data-unit-plural="tsp" data-weight="0.3" data-weight-unit="g">
+          <span class="qty">1/8 tsp <span class="weight">(0.3 g)</span></span>
+          <span class="name">cayenne pepper</span>
+        </li>
+      </ul>
+
+      <p class="group-label">Orzo</p>
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="1" data-unit="tbsp" data-unit-plural="tbsp" data-weight="14" data-weight-unit="g">
+          <span class="qty">1 tbsp <span class="weight">(14 g)</span></span>
+          <span class="name">olive oil</span>
+        </li>
+        <li class="ingredient" data-amount="170" data-unit="g" data-unit-plural="g" data-weight="170" data-weight-unit="g">
+          <span class="qty">170 g <span class="weight">(170 g)</span></span>
+          <span class="name">orzo pasta (about 1 cup)</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="tbsp" data-unit-plural="tbsp" data-weight="9" data-weight-unit="g">
+          <span class="qty">1 tbsp <span class="weight">(9 g)</span></span>
+          <span class="name">vegetable stock powder</span>
+        </li>
+        <li class="ingredient" data-amount="2" data-unit="tbsp" data-unit-plural="tbsp" data-weight="28" data-weight-unit="g">
+          <span class="qty">2 tbsp <span class="weight">(28 g)</span></span>
+          <span class="name">unsalted butter</span>
+        </li>
+      </ul>
+
+      <p class="group-label">Lemony Hummus Sauce</p>
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="4" data-unit="tbsp" data-unit-plural="tbsp" data-weight="60" data-weight-unit="g">
+          <span class="qty">4 tbsp <span class="weight">(60 g)</span></span>
+          <span class="name">hummus</span>
+        </li>
+        <li class="ingredient" data-amount="2" data-unit="tbsp" data-unit-plural="tbsp" data-weight="28" data-weight-unit="g">
+          <span class="qty">2 tbsp <span class="weight">(28 g)</span></span>
+          <span class="name">mayonnaise</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="instructions" aria-label="Instructions">
+      <h2>Instructions</h2>
+
+      <p class="step-group-label">Prep</p>
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <p>Preheat oven to 450°F (230°C). Bring a medium pot of salted water to a boil. Peel the <span class="ing-ref">red onion</span> and grate half of it into a large bowl; cut the remaining half into ½-inch pieces. Slice the <span class="ing-ref">zucchini</span> into ½-inch rounds. Cut the <span class="ing-ref">bell pepper</span> into 1-inch pieces. Zest and juice the <span class="ing-ref">lemon</span>, keeping them separate. Mince or grate the <span class="ing-ref">garlic</span>. Combine all <span class="ing-ref">shawarma spice blend</span> spices in a small bowl and stir together — you'll use half for the koftas and half for the vegetables.</p>
+        </li>
+      </ol>
+
+      <p class="step-group-label">Koftas</p>
+      <ol class="steps" start="2">
+        <li class="step">
+          <span class="step-num">2</span>
+          <p>To the bowl with the grated onion, add the <span class="ing-ref">ground beef</span>, <span class="ing-ref">panko</span>, half the <span class="ing-ref">garlic</span>, half the <span class="ing-ref">garlic salt</span>, and half the shawarma spice blend. Season with black pepper and mix until evenly combined. Roll the mixture into 6 oval logs.</p>
+        </li>
+      </ol>
+
+      <p class="step-group-label">Bake</p>
+      <ol class="steps" start="3">
+        <li class="step">
+          <span class="step-num">3</span>
+          <p>On a parchment-lined baking sheet, toss the <span class="ing-ref">zucchini</span>, <span class="ing-ref">bell pepper</span>, and diced <span class="ing-ref">onion</span> with the remaining garlic salt, remaining shawarma spice blend, and <span class="ing-ref">olive oil</span>. Spread in a single layer. Arrange the koftas on top of the vegetables. Bake 14–20 minutes until the vegetables are tender and the koftas are cooked through (internal temperature 165°F / 74°C).</p>
+        </li>
+      </ol>
+
+      <p class="step-group-label">Orzo</p>
+      <ol class="steps" start="4">
+        <li class="step">
+          <span class="step-num">4</span>
+          <p>Add the <span class="ing-ref">orzo</span> to the boiling water and cook 8–10 minutes, stirring occasionally, until just tender but still firm to the bite. Reserve 1 tbsp of pasta water, then strain and return to the pot off heat.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">5</span>
+          <p>Add the <span class="ing-ref">vegetable stock powder</span>, 1 tsp of the lemon zest, 1 tbsp of the lemon juice, <span class="ing-ref">butter</span>, and reserved pasta water to the orzo. Stir to combine.</p>
+        </li>
+      </ol>
+
+      <p class="step-group-label">Sauce &amp; Serve</p>
+      <ol class="steps" start="6">
+        <li class="step">
+          <span class="step-num">6</span>
+          <p>In a small bowl, stir together the <span class="ing-ref">hummus</span>, <span class="ing-ref">mayonnaise</span>, remaining garlic, and remaining lemon juice until smooth.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">7</span>
+          <p>Divide the orzo between plates. Top with the roasted vegetables and koftas. Drizzle the lemony hummus sauce over top. Serve with any remaining lemon wedges.</p>
+        </li>
+      </ol>
+    </section>
+
+  </div>
+
+  <footer class="recipe-foot">
+    <p class="notes"><strong>Notes:</strong> The Shawarma Spice Blend totals 1 tbsp (3 tsp) and is split equally between the koftas and the vegetables. If you make this often, pre-mix a larger batch and store in a jar — it keeps well for months and is great on chicken or roasted cauliflower too. Cumin and coriander are the backbone; don't skip those. Cayenne is optional if cooking for kids.</p>
+    <p class="source">Adapted from Hello Fresh · Shawarma Spice Blend substituted with individual spices · standard format v2</p>
+  </footer>
+
+</article>
+
+<script>
+  (function () {
+    var recipe = document.getElementById('recipe');
+    var scaleButtons = document.querySelectorAll('.scale-btn');
+    var servingsEl = document.getElementById('servings-value');
+    var servingsBase = servingsEl ? parseFloat(servingsEl.dataset.servingsBase) : null;
+
+    function decimalToFraction(value) {
+      if (value <= 0) return '0';
+      var whole = Math.floor(value + 1e-9);
+      var remainder = value - whole;
+      var eighths = Math.round(remainder * 8);
+      if (eighths === 8) { whole += 1; eighths = 0; }
+      var fracMap = {1: '1/8', 2: '1/4', 3: '3/8', 4: '1/2', 5: '5/8', 6: '3/4', 7: '7/8'};
+      var fracStr = fracMap[eighths] || '';
+      if (whole === 0 && fracStr) return fracStr;
+      if (whole > 0 && fracStr) return whole + ' ' + fracStr;
+      return String(whole);
+    }
+
+    function applyScale(factor) {
+      document.querySelectorAll('.ingredient').forEach(function (li) {
+        var amount = parseFloat(li.dataset.amount);
+        var unit = li.dataset.unit;
+        var unitPlural = li.dataset.unitPlural || unit;
+        var weight = parseFloat(li.dataset.weight);
+        var weightUnit = li.dataset.weightUnit || 'g';
+
+        var scaledAmount = amount * factor;
+        var displayAmount = decimalToFraction(scaledAmount);
+        var unitWord = (scaledAmount !== 1 && unitPlural) ? unitPlural : unit;
+
+        var scaledWeight = Math.max(1, Math.round(weight * factor * 10) / 10);
+
+        var qtyEl = li.querySelector('.qty');
+        var unitDisplay = unitWord ? ' ' + unitWord : '';
+        qtyEl.innerHTML = displayAmount + unitDisplay +
+          ' <span class="weight">(' + scaledWeight + ' ' + weightUnit + ')</span>';
+      });
+
+      if (servingsEl && servingsBase !== null) {
+        var scaledServings = servingsBase * factor;
+        servingsEl.textContent = (scaledServings % 1 === 0) ? scaledServings : decimalToFraction(scaledServings);
+      }
+    }
+
+    scaleButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        scaleButtons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        applyScale(parseFloat(btn.dataset.scale));
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
