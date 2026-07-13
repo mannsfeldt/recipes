@@ -4,149 +4,132 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mannsfeldt Recipe Box</title>
-<!--
-  ============================================================================
-  RECIPE INDEX Ã¢ÂÂ v1
-  ============================================================================
-  HOW TO ADD A NEW RECIPE:
-  1. Find the <section class="category"> matching the recipe's category.
-     If the category doesn't exist yet, copy an entire <section class="category">
-     block, change the h2 text and the id on the section, and place it in
-     alphabetical order among the other category sections.
-  2. Inside that section's <ul class="recipe-list">, add one <li>:
-       <li><a href="FILENAME.html">Recipe Title</a></li>
-     Keep entries within a category in alphabetical order.
-  3. Save. No build step, no other files to touch Ã¢ÂÂ this is the whole index.
-  ============================================================================
--->
 <style>
-  :root {
-    --paper: #F3F4EF;
-    --paper-panel: #EAE7DC;
-    --ink: #2B2A28;
-    --ink-soft: #6B675E;
-    --rule: #D6D2C4;
-    --herb: #3F5D4A;
-    --herb-soft: #E4EAE3;
-    --spice: #A8722E;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 64px; }
-
-  header { border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 32px; }
-
-  h1 {
-    margin: 0 0 8px;
-    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: clamp(2rem, 4vw, 2.75rem);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-  }
-
-  .dek { margin: 0; max-width: 60ch; color: var(--ink-soft); font-size: 1.02rem; }
-
-  .category { margin: 0 0 36px; }
-
-  h2 {
-    margin: 0 0 14px;
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--herb);
-  }
-
-  ul.recipe-list { list-style: none; margin: 0; padding: 0; }
-
-  .recipe-list li {
-    border-bottom: 1px dashed var(--rule);
-  }
-
-  .recipe-list li:first-child { border-top: 1px dashed var(--rule); }
-
-  .recipe-list a {
-    display: block;
-    padding: 12px 14px;
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 1rem;
-    background: var(--paper-panel);
-    transition: background 0.15s ease;
-  }
-
-  .recipe-list a:hover,
-  .recipe-list a:focus-visible {
-    background: var(--herb-soft);
-  }
-
-  .recipe-list a::before {
-    content: "Ã¢ÂÂ";
-    color: var(--herb);
-    font-weight: 700;
-    margin-right: 10px;
-  }
-
-  footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--rule);
-    color: var(--ink-soft);
-    font-size: 0.85rem;
-  }
+:root {
+--paper: #F3F4EF;
+--paper-panel: #EAE7DC;
+--ink: #2B2A28;
+--ink-soft: #6B675E;
+--rule: #D6D2C4;
+--herb: #3F5D4A;
+--herb-soft: #E4EAE3;
+--spice: #A8722E;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 760px; margin: 0 auto; padding: 40px 24px 64px; }
+header { border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 32px; }
+h1 { margin: 0 0 8px; font-family: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif; font-size: clamp(2rem,4vw,2.75rem); font-weight: 600; letter-spacing: -0.01em; }
+.dek { margin: 0; max-width: 60ch; color: var(--ink-soft); font-size: 1.02rem; }
+.category { margin: 0 0 36px; }
+h2 { margin: 0 0 14px; font-family: "Iowan Old Style","Palatino Linotype",Georgia,serif; font-size: 1.3rem; font-weight: 600; color: var(--herb); }
+ul.recipe-list { list-style: none; margin: 0; padding: 0; }
+.recipe-list li { border-bottom: 1px dashed var(--rule); }
+.recipe-list li:first-child { border-top: 1px dashed var(--rule); }
+.recipe-list a { display: block; padding: 12px 14px; color: var(--ink); text-decoration: none; font-size: 1rem; background: var(--paper-panel); transition: background 0.15s ease; }
+.recipe-list a:hover, .recipe-list a:focus-visible { background: var(--herb-soft); }
+.recipe-list a::before { content: "→"; color: var(--herb); font-weight: 700; margin-right: 10px; }
+footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 0.85rem; }
 </style>
 </head>
 <body>
-
 <div class="wrap">
+<header>
+<h1>Mannsfeldt Recipe Box</h1>
+<p class="dek">Family recipes and reformatted favourites, stored as standalone offline-ready cards.</p>
+</header>
 
-  <header>
-    <h1>Mannsfeldt Recipe Box</h1>
-    <p class="dek">Family recipes and reformatted favourites, stored as standalone offline-ready cards.</p>
-  </header>
+<section class="category" id="appetizers-snacks">
+<h2>Appetizers & Snacks</h2>
+<ul class="recipe-list">
+<li><a href="taco-dip.html">Taco Dip</a></li>
+</ul>
+</section>
 
-  <section class="category" id="baked-goods">
-    <h2>Baked Goods</h2>
-    <ul class="recipe-list">
-      <li><a href="lemon-cranberry-scones.html">Lemon Cranberry Scones with Lemon Glaze</a></li>
-    </ul>
-  </section>
+<section class="category" id="baked-goods">
+<h2>Baked Goods</h2>
+<ul class="recipe-list">
+<li><a href="almond-sugar-cookies.html">Almond Sugar Cookies</a></li>
+<li><a href="banana-nut-bread.html">Banana Nut Bread</a></li>
+<li><a href="best-ever-banana-bread.html">Best Ever Banana Bread</a></li>
+<li><a href="butter-tarts.html">Butter Tarts</a></li>
+<li><a href="hazelnut-macaroons.html">Hazelnut Macaroons</a></li>
+<li><a href="lemon-cranberry-scones.html">Lemon Cranberry Scones with Lemon Glaze</a></li>
+<li><a href="magic-cookie-bars.html">Magic Cookie Bars</a></li>
+<li><a href="plum-cake.html">German Plum Cake (Pflaumenkuchen)</a></li>
+</ul>
+</section>
 
-  <section class="category" id="chicken-poultry">
-    <h2>Chicken &amp; Poultry</h2>
-    <ul class="recipe-list">
-      <li><a href="general-tsos-chicken.html">General Tso's Chicken</a></li>
-    </ul>
-  </section>
+<section class="category" id="beef-pork">
+<h2>Beef & Pork</h2>
+<ul class="recipe-list">
+<li><a href="best-ever-meatloaf.html">Best Ever Meatloaf</a></li>
+<li><a href="layered-fiesta-casserole.html">Layered Fiesta Casserole</a></li>
+</ul>
+</section>
 
-  <section class="category" id="fish-seafood">
-    <h2>Fish &amp; Seafood</h2>
-    <ul class="recipe-list">
-      <li><a href="blackened-tilapia.html">Blackened Tilapia</a></li>
-    </ul>
-  </section>
+<section class="category" id="chicken-poultry">
+<h2>Chicken & Poultry</h2>
+<ul class="recipe-list">
+<li><a href="bruschetta-stuffed-chicken-breasts.html">Bruschetta 'n Cheese Stuffed Chicken Breasts</a></li>
+<li><a href="chicken-broccoli-casserole.html">Chicken & Broccoli Casserole</a></li>
+<li><a href="foil-pack-taco-chicken-dinner.html">Foil-Pack Taco Chicken Dinner</a></li>
+<li><a href="general-tsos-chicken.html">General Tso's Chicken</a></li>
+</ul>
+</section>
 
-  <footer>
-    <p>Standard format v2 ÃÂ· updated as recipes are added.</p>
-  </footer>
+<section class="category" id="condiments-sauces">
+<h2>Condiments & Sauces</h2>
+<ul class="recipe-list">
+<li><a href="microwave-cheese-sauce.html">Gramma's Microwave Cheese Sauce</a></li>
+<li><a href="plum-butter.html">Plum Butter</a></li>
+</ul>
+</section>
 
+<section class="category" id="desserts">
+<h2>Desserts</h2>
+<ul class="recipe-list">
+<li><a href="apple-crisp.html">Apple Crisp</a></li>
+<li><a href="haystacks.html">Haystacks</a></li>
+<li><a href="triple-threat-chocolate-cheesecake.html">Triple Threat Chocolate Cheesecake</a></li>
+</ul>
+</section>
+
+<section class="category" id="fish-seafood">
+<h2>Fish & Seafood</h2>
+<ul class="recipe-list">
+<li><a href="blackened-tilapia.html">Blackened Tilapia</a></li>
+</ul>
+</section>
+
+<section class="category" id="pasta-grains">
+<h2>Pasta & Grains</h2>
+<ul class="recipe-list">
+<li><a href="beefaroni.html">Beefaroni</a></li>
+</ul>
+</section>
+
+<section class="category" id="soups-stews">
+<h2>Soups & Stews</h2>
+<ul class="recipe-list">
+<li><a href="catherines-beef-stew.html">Catherine's Beef Stew</a></li>
+<li><a href="slow-cooker-butternut-squash-soup.html">Slow Cooker Butternut Squash Soup</a></li>
+<li><a href="turkey-soup.html">Turkey (or Chicken) Carcass Soup</a></li>
+</ul>
+</section>
+
+<section class="category" id="vegetables-sides">
+<h2>Vegetables & Sides</h2>
+<ul class="recipe-list">
+<li><a href="baked-beans.html">Baked Beans</a></li>
+<li><a href="maple-ginger-glazed-carrots.html">Maple Ginger Glazed Carrots</a></li>
+<li><a href="scalloped-hash-brown-potatoes.html">Scalloped Hash Brown Potatoes</a></li>
+</ul>
+</section>
+
+<footer>
+<p>Standard format v2 · updated as recipes are added.</p>
+</footer>
 </div>
-
 </body>
 </html>
-      <section>
-        <h2>Beef &amp; Pork</h2>
-        <ul>
-        <li><a href="sheet-pan-beef-koftas-orzo-lemony-hummus.html">Sheet Pan Beef Koftas with Orzo and Lemony Hummus Sauce</a></li>
-        </ul>
-      </section>
-
