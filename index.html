@@ -1,7 +1,39 @@
-<ul>
-        <li><a href="strawberry-rhubarb-pie.html">Strawberry Rhubarb Pie</a></li>
-        <li><a href="taco-dip.html">Taco Dip</a></li>
-      </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mannsfeldt Family Recipes</title>
+<style>
+:root{--paper:#F3F4EF;--paper-panel:#EAE7DC;--ink:#2B2A28;--ink-soft:#6B675E;--rule:#D6D2C4;--herb:#3F5D4A;--spice:#A8722E;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.5;}
+.container{max-width:900px;margin:0 auto;padding:40px 24px 64px;}
+header{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:40px;}
+h1{margin:0 0 8px;font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:clamp(2rem,4vw,2.75rem);font-weight:600;}
+.subtitle{color:var(--ink-soft);font-size:1.02rem;margin:0;}
+.category{margin-bottom:36px;}
+h2{font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:1.25rem;font-weight:600;margin:0 0 12px;padding-bottom:6px;border-bottom:1px solid var(--rule);}
+.recipe-list{list-style:none;margin:0;padding:0;columns:2;column-gap:32px;}
+.recipe-list li{padding:5px 0;border-bottom:1px dashed var(--rule);}
+.recipe-list a{color:var(--ink);text-decoration:none;font-size:0.95rem;}
+.recipe-list a:hover{color:var(--herb);text-decoration:underline;}
+footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:0.85rem;}
+@media(max-width:600px){.recipe-list{columns:1;}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>Mannsfeldt Family Recipes</h1>
+<p class="subtitle">A collection of family favourites · standard format v2</p>
+</header>
+
+<section class="category" id="appetizers-snacks">
+<h2>Appetizers & Snacks</h2>
+<ul class="recipe-list">
+<li><a href="taco-dip.html">Taco Dip</a></li>
+</ul>
 </section>
 
 <section class="category" id="baked-goods">
@@ -49,6 +81,7 @@
 <ul class="recipe-list">
 <li><a href="apple-crisp.html">Apple Crisp</a></li>
 <li><a href="haystacks.html">Haystacks</a></li>
+<li><a href="strawberry-rhubarb-pie.html">Strawberry Rhubarb Pie</a></li>
 <li><a href="triple-threat-chocolate-cheesecake.html">Triple Threat Chocolate Cheesecake</a></li>
 </ul>
 </section>
@@ -84,7 +117,6 @@
 <li><a href="scalloped-hash-brown-potatoes.html">Scalloped Hash Brown Potatoes</a></li>
 </ul>
 </section>
-
 <footer>
 <p>Standard format v2 · updated as recipes are added.</p>
 </footer>
