@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slow Cooker Butternut Squash Soup — Recipe Card</title>
+<style>
+:root{--paper:#F3F4EF;--paper-panel:#EAE7DC;--ink:#2B2A28;--ink-soft:#6B675E;--rule:#D6D2C4;--herb:#3F5D4A;--herb-soft:#E4EAE3;--spice:#A8722E;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.recipe{max-width:980px;margin:0 auto;padding:40px 24px 64px;}
+.recipe-head{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:32px;}
+h1{margin:0 0 8px;font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:clamp(2rem,4vw,2.75rem);font-weight:600;letter-spacing:-0.01em;}
+.dek{margin:0 0 20px;max-width:60ch;color:var(--ink-soft);font-size:1.02rem;}
+.recipe-photo{margin:0 0 20px;border-radius:6px;overflow:hidden;background:var(--paper-panel);}
+.recipe-photo img{display:block;width:100%;max-height:360px;object-fit:cover;}
+.meta-bar{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0 0 20px;padding:0;}
+.meta-bar li{display:flex;flex-direction:column;gap:2px;padding:8px 16px;background:var(--paper-panel);border-radius:3px;min-width:84px;}
+.meta-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);}
+.meta-value{font-family:"SF Mono","Consolas",monospace;font-size:0.92rem;font-weight:600;}
+.equipment{margin:0 0 20px;}
+.equipment-label{margin:0 0 8px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);font-weight:600;}
+.equipment-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;}
+.equipment-list li{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--paper-panel);border:1px solid var(--rule);border-radius:999px;font-size:0.85rem;}
+.equipment-list li::before{content:"—";color:var(--herb);font-weight:700;}
+.scale-toggle-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.scale-toggle-label{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);font-weight:600;}
+.scale-toggle{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;}
+.scale-btn{appearance:none;border:none;background:transparent;padding:8px 18px;font-family:inherit;font-size:0.85rem;font-weight:600;color:var(--ink);cursor:pointer;transition:background .15s ease,color .15s ease;}
+.scale-btn+.scale-btn{border-left:1.5px solid var(--ink);}
+.scale-btn.active{background:var(--ink);color:var(--paper);}
+.scale-btn:focus-visible{outline:2px solid var(--herb);outline-offset:-2px;}
+.recipe-body{display:grid;grid-template-columns:minmax(240px,34%) 1fr;gap:8px 48px;align-items:start;}
+.recipe-body h2{margin:0 0 16px;font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:1.3rem;font-weight:600;}
+.ingredients{border-right:1px solid var(--rule);padding-right:32px;position:sticky;top:24px;}
+.group-label{margin:20px 0 8px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--herb);font-weight:700;}
+.group-label:first-of-type{margin-top:0;}
+ul.ingredient-list{list-style:none;margin:0 0 8px;padding:0;}
+.ingredient{display:flex;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px dashed var(--rule);}
+.ingredient .qty{flex:0 0 auto;min-width:132px;font-family:"SF Mono","Consolas",monospace;font-size:0.86rem;font-weight:600;}
+.ingredient .qty .weight{color:var(--spice);font-weight:500;}
+.ingredient .name{font-size:0.95rem;}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+.step-group-label{margin:24px 0 10px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--herb);font-weight:700;}
+.step-group-label:first-of-type{margin-top:0;}
+.step{counter-increment:step;display:flex;gap:16px;margin-bottom:20px;}
+.step-num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--herb);color:var(--herb-soft);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;}
+.step p{margin:2px 0 0;}
+.ing-ref{font-weight:600;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:2px;}
+.recipe-foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:0.88rem;}
+.recipe-foot .notes{margin:0 0 8px;color:var(--ink);}
+@media(max-width:760px){.recipe-body{grid-template-columns:1fr;}.ingredients{border-right:none;border-bottom:2px solid var(--ink);padding-right:0;padding-bottom:24px;margin-bottom:24px;position:static;}.meta-bar li{min-width:72px;}}
+@media print{body{background:#fff;}.scale-toggle-wrap{display:none;}.ingredients{position:static;border-right:1px solid #999;}}
+</style>
+</head>
+<body>
+<article class="recipe" id="recipe">
+<header class="recipe-head">
+<h1>Slow Cooker Butternut Squash Soup</h1>
+<p class="dek">Rich, creamy, and naturally vegan — this hands-off slow cooker soup is silky smooth with a hint of apple sweetness and warm spice.</p>
+<ul class="meta-bar">
+<li><span class="meta-label">Prep</span><span class="meta-value">15 min</span></li>
+<li><span class="meta-label">Cook</span><span class="meta-value">4 hr</span></li>
+<li><span class="meta-label">Total</span><span class="meta-value">4 hr 15 min</span></li>
+<li><span class="meta-label">Servings</span><span class="meta-value" id="servings-value" data-servings-base="6">6–8</span></li>
+</ul>
+<div class="equipment">
+<p class="equipment-label">Equipment</p>
+<ul class="equipment-list">
+<li>Large slow cooker</li>
+<li>Immersion blender</li>
+</ul>
+</div>
+<div class="scale-toggle-wrap">
+<span class="scale-toggle-label">Scale recipe</span>
+<div class="scale-toggle" role="group" aria-label="Recipe scale">
+<button type="button" class="scale-btn" data-scale="0.5">Half</button>
+<button type="button" class="scale-btn active" data-scale="1">1×</button>
+<button type="button" class="scale-btn" data-scale="2">Double</button>
+</div>
+</div>
+</header>
+<div class="recipe-body">
+<section class="ingredients" aria-label="Ingredients">
+<h2>Ingredients</h2>
+<ul class="ingredient-list">
+<li class="ingredient" data-amount="2" data-unit="cup" data-unit-plural="cups" data-weight="475" data-weight-unit="ml"><span class="qty">2 cups <span class="weight">(475 ml)</span></span><span class="name">vegetable stock</span></li>
+<li class="ingredient" data-amount="2" data-unit="clove" data-unit-plural="cloves" data-weight="10" data-weight-unit="g"><span class="qty">2 cloves <span class="weight">(10 g)</span></span><span class="name">garlic, peeled and minced</span></li>
+<li class="ingredient" data-amount="1" data-unit="medium" data-unit-plural="medium" data-weight="100" data-weight-unit="g"><span class="qty">1 medium <span class="weight">(100 g)</span></span><span class="name">carrot, peeled and diced</span></li>
+<li class="ingredient" data-amount="1" data-unit="" data-unit-plural="" data-weight="180" data-weight-unit="g"><span class="qty">1  <span class="weight">(180 g)</span></span><span class="name">Granny Smith apple, cored and diced</span></li>
+<li class="ingredient" data-amount="1" data-unit="medium" data-unit-plural="medium" data-weight="800" data-weight-unit="g"><span class="qty">1 medium <span class="weight">(800 g)</span></span><span class="name">butternut squash, peeled, seeded, and diced</span></li>
+<li class="ingredient" data-amount="1" data-unit="sprig" data-unit-plural="sprigs" data-weight="2" data-weight-unit="g"><span class="qty">1 sprig <span class="weight">(2 g)</span></span><span class="name">fresh sage</span></li>
+<li class="ingredient" data-amount="1" data-unit="medium" data-unit-plural="medium" data-weight="150" data-weight-unit="g"><span class="qty">1 medium <span class="weight">(150 g)</span></span><span class="name">white onion, diced</span></li>
+<li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="3" data-weight-unit="g"><span class="qty">1/2 tsp <span class="weight">(3 g)</span></span><span class="name">salt, or more to taste</span></li>
+<li class="ingredient" data-amount="0.25" data-unit="tsp" data-unit-plural="tsp" data-weight="1" data-weight-unit="g"><span class="qty">1/4 tsp <span class="weight">(1 g)</span></span><span class="name">freshly ground black pepper</span></li>
+<li class="ingredient" data-amount="0.125" data-unit="tsp" data-unit-plural="tsp" data-weight="0.3" data-weight-unit="g"><span class="qty">1/8 tsp <span class="weight">(0.3 g)</span></span><span class="name">cayenne, or more to taste</span></li>
+<li class="ingredient" data-amount="1" data-unit="pinch" data-unit-plural="pinch" data-weight="0.5" data-weight-unit="g"><span class="qty">1 pinch <span class="weight">(0.5 g)</span></span><span class="name">ground cinnamon</span></li>
+<li class="ingredient" data-amount="1" data-unit="pinch" data-unit-plural="pinch" data-weight="0.5" data-weight-unit="g"><span class="qty">1 pinch <span class="weight">(0.5 g)</span></span><span class="name">ground nutmeg</span></li>
+<li class="ingredient" data-amount="0.5" data-unit="cup" data-unit-plural="cups" data-weight="120" data-weight-unit="ml"><span class="qty">1/2 cup <span class="weight">(120 ml)</span></span><span class="name">canned unsweetened coconut milk</span></li>
+</ul>
+
+</section>
+<section class="instructions" aria-label="Instructions">
+<h2>Instructions</h2>
+<ol class="steps">
+<li class="step"><span class="step-num">1</span><p>Add <span class="ing-ref">vegetable stock</span>, <span class="ing-ref">garlic</span>, <span class="ing-ref">carrot</span>, <span class="ing-ref">apple</span>, <span class="ing-ref">butternut squash</span>, <span class="ing-ref">sage</span>, <span class="ing-ref">onion</span>, <span class="ing-ref">salt</span>, <span class="ing-ref">pepper</span>, <span class="ing-ref">cayenne</span>, <span class="ing-ref">cinnamon</span>, and <span class="ing-ref">nutmeg</span> to the slow cooker. Toss to combine.</p></li>
+<li class="step"><span class="step-num">2</span><p>Cook on low 6–8 hours (or high 3–4 hours), until the squash is completely tender and mashes easily with a fork.</p></li>
+<li class="step"><span class="step-num">3</span><p>Remove and discard the <span class="ing-ref">sage</span> sprig. Stir in the <span class="ing-ref">coconut milk</span>.</p></li>
+<li class="step"><span class="step-num">4</span><p>Use an immersion blender to purée the soup until completely smooth. (Or transfer in batches to a regular blender, being careful with the hot liquid.) Taste and adjust seasoning.</p></li>
+<li class="step"><span class="step-num">5</span><p>Serve warm, garnished with an extra drizzle of coconut milk and a pinch of cayenne or smoked paprika if desired.</p></li>
+</ol>
+
+</section>
+</div>
+<footer class="recipe-foot">
+<p class="notes"><strong>Notes:</strong> Freezes beautifully — store in airtight containers for up to 3 months. Thin with extra stock if needed after reheating.</p>
+<p class="source">Adapted from Gimme Some Oven (gimmesomeoven.com) · standard format v2 · stored for offline and mobile reference.</p>
+</footer>
+</article>
+<script>
+(function(){
+var scaleButtons=document.querySelectorAll('.scale-btn');
+var servingsEl=document.getElementById('servings-value');
+var servingsBase=servingsEl?parseFloat(servingsEl.dataset.servingsBase):null;
+function decimalToFraction(v){
+  if(v<=0)return'0';
+  var w=Math.floor(v+1e-9),r=v-w,e=Math.round(r*8);
+  if(e===8){w+=1;e=0;}
+  var m={1:'1/8',2:'1/4',3:'3/8',4:'1/2',5:'5/8',6:'3/4',7:'7/8'};
+  var f=m[e]||'';
+  if(w===0&&f)return f;
+  if(w>0&&f)return w+' '+f;
+  return String(w);
+}
+function applyScale(factor){
+  document.querySelectorAll('.ingredient').forEach(function(li){
+    var a=parseFloat(li.dataset.amount),u=li.dataset.unit,up=li.dataset.unitPlural||u;
+    var w=parseFloat(li.dataset.weight),wu=li.dataset.weightUnit||'g';
+    var sa=a*factor,sw=Math.max(1,Math.round(w*factor));
+    li.querySelector('.qty').innerHTML=decimalToFraction(sa)+' '+(sa>1?up:u)+' <span class="weight">('+sw+' '+wu+')</span>';
+  });
+  if(servingsEl&&servingsBase!==null){
+    var ss=servingsBase*factor;
+    servingsEl.textContent=(ss%1===0)?ss:decimalToFraction(ss);
+  }
+}
+scaleButtons.forEach(function(btn){
+  btn.addEventListener('click',function(){
+    scaleButtons.forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    applyScale(parseFloat(btn.dataset.scale));
+  });
+});
+})();
+</script>
+</body>
+</html>
