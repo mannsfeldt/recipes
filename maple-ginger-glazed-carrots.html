@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maple Ginger Glazed Carrots — Recipe Card</title>
+<style>
+:root{--paper:#F3F4EF;--paper-panel:#EAE7DC;--ink:#2B2A28;--ink-soft:#6B675E;--rule:#D6D2C4;--herb:#3F5D4A;--herb-soft:#E4EAE3;--spice:#A8722E;}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"Avenir Next","Segoe UI","Helvetica Neue",Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;}
+.recipe{max-width:980px;margin:0 auto;padding:40px 24px 64px;}
+.recipe-head{border-bottom:2px solid var(--ink);padding-bottom:24px;margin-bottom:32px;}
+h1{margin:0 0 8px;font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;font-size:clamp(2rem,4vw,2.75rem);font-weight:600;letter-spacing:-0.01em;}
+.dek{margin:0 0 20px;max-width:60ch;color:var(--ink-soft);font-size:1.02rem;}
+.recipe-photo{margin:0 0 20px;border-radius:6px;overflow:hidden;background:var(--paper-panel);}
+.recipe-photo img{display:block;width:100%;max-height:360px;object-fit:cover;}
+.meta-bar{display:flex;flex-wrap:wrap;gap:10px;list-style:none;margin:0 0 20px;padding:0;}
+.meta-bar li{display:flex;flex-direction:column;gap:2px;padding:8px 16px;background:var(--paper-panel);border-radius:3px;min-width:84px;}
+.meta-label{font-size:0.68rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);}
+.meta-value{font-family:"SF Mono","Consolas",monospace;font-size:0.92rem;font-weight:600;}
+.equipment{margin:0 0 20px;}
+.equipment-label{margin:0 0 8px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);font-weight:600;}
+.equipment-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0;}
+.equipment-list li{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--paper-panel);border:1px solid var(--rule);border-radius:999px;font-size:0.85rem;}
+.equipment-list li::before{content:"—";color:var(--herb);font-weight:700;}
+.scale-toggle-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.scale-toggle-label{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);font-weight:600;}
+.scale-toggle{display:inline-flex;border:1.5px solid var(--ink);border-radius:999px;overflow:hidden;}
+.scale-btn{appearance:none;border:none;background:transparent;padding:8px 18px;font-family:inherit;font-size:0.85rem;font-weight:600;color:var(--ink);cursor:pointer;transition:background .15s ease,color .15s ease;}
+.scale-btn+.scale-btn{border-left:1.5px solid var(--ink);}
+.scale-btn.active{background:var(--ink);color:var(--paper);}
+.scale-btn:focus-visible{outline:2px solid var(--herb);outline-offset:-2px;}
+.recipe-body{display:grid;grid-template-columns:minmax(240px,34%) 1fr;gap:8px 48px;align-items:start;}
+.recipe-body h2{margin:0 0 16px;font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;font-size:1.3rem;font-weight:600;}
+.ingredients{border-right:1px solid var(--rule);padding-right:32px;position:sticky;top:24px;}
+.group-label{margin:20px 0 8px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--herb);font-weight:700;}
+.group-label:first-of-type{margin-top:0;}
+ul.ingredient-list{list-style:none;margin:0 0 8px;padding:0;}
+.ingredient{display:flex;align-items:baseline;gap:12px;padding:7px 0;border-bottom:1px dashed var(--rule);}
+.ingredient .qty{flex:0 0 auto;min-width:132px;font-family:"SF Mono","Consolas",monospace;font-size:0.86rem;font-weight:600;}
+.ingredient .qty .weight{color:var(--spice);font-weight:500;}
+.ingredient .name{font-size:0.95rem;}
+ol.steps{list-style:none;margin:0;padding:0;counter-reset:step;}
+.step-group-label{margin:24px 0 10px;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--herb);font-weight:700;}
+.step-group-label:first-of-type{margin-top:0;}
+.step{counter-increment:step;display:flex;gap:16px;margin-bottom:20px;}
+.step-num{flex:0 0 auto;width:28px;height:28px;border-radius:50%;background:var(--herb);color:var(--herb-soft);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:700;}
+.step p{margin:2px 0 0;}
+.ing-ref{font-weight:600;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:2px;}
+.recipe-foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule);color:var(--ink-soft);font-size:0.88rem;}
+.recipe-foot .notes{margin:0 0 8px;color:var(--ink);}
+@media(max-width:760px){.recipe-body{grid-template-columns:1fr;}.ingredients{border-right:none;border-bottom:2px solid var(--ink);padding-right:0;padding-bottom:24px;margin-bottom:24px;position:static;}.meta-bar li{min-width:72px;}}
+@media print{body{background:#fff;}.scale-toggle-wrap{display:none;}.ingredients{position:static;border-right:1px solid #999;}}
+</style>
+</head>
+<body>
+<article class="recipe" id="recipe">
+<header class="recipe-head">
+<h1>Maple Ginger Glazed Carrots</h1>
+<p class="dek">A quick stovetop glaze of butter, maple syrup, and ginger transforms cooked carrots into an elegant, fuss-free side dish.</p>
+<ul class="meta-bar">
+<li><span class="meta-label">Prep</span><span class="meta-value">5 min</span></li>
+<li><span class="meta-label">Cook</span><span class="meta-value">5 min</span></li>
+<li><span class="meta-label">Total</span><span class="meta-value">10 min</span></li>
+<li><span class="meta-label">Servings</span><span class="meta-value" id="servings-value" data-servings-base="4">4</span></li>
+</ul>
+<div class="equipment">
+<p class="equipment-label">Equipment</p>
+<ul class="equipment-list">
+<li>Small saucepan</li>
+</ul>
+</div>
+<div class="scale-toggle-wrap">
+<span class="scale-toggle-label">Scale recipe</span>
+<div class="scale-toggle" role="group" aria-label="Recipe scale">
+<button type="button" class="scale-btn" data-scale="0.5">Half</button>
+<button type="button" class="scale-btn active" data-scale="1">1×</button>
+<button type="button" class="scale-btn" data-scale="2">Double</button>
+</div>
+</div>
+</header>
+<div class="recipe-body">
+<section class="ingredients" aria-label="Ingredients">
+<h2>Ingredients</h2>
+<ul class="ingredient-list">
+<li class="ingredient" data-amount="0.25" data-unit="cup" data-unit-plural="cups" data-weight="60" data-weight-unit="g"><span class="qty">1/4 cup <span class="weight">(60 g)</span></span><span class="name">butter</span></li>
+<li class="ingredient" data-amount="0.333" data-unit="cup" data-unit-plural="cups" data-weight="110" data-weight-unit="g"><span class="qty">1/3 cup <span class="weight">(110 g)</span></span><span class="name">maple syrup</span></li>
+<li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="1.5" data-weight-unit="g"><span class="qty">1/2 tsp <span class="weight">(1.5 g)</span></span><span class="name">ground ginger</span></li>
+<li class="ingredient" data-amount="3" data-unit="cup" data-unit-plural="cups" data-weight="360" data-weight-unit="g"><span class="qty">3 cups <span class="weight">(360 g)</span></span><span class="name">sliced cooked carrots</span></li>
+</ul>
+
+</section>
+<section class="instructions" aria-label="Instructions">
+<h2>Instructions</h2>
+<ol class="steps">
+<li class="step"><span class="step-num">1</span><p>Combine <span class="ing-ref">butter</span>, <span class="ing-ref">maple syrup</span>, and <span class="ing-ref">ground ginger</span> in a small saucepan.</p></li>
+<li class="step"><span class="step-num">2</span><p>Cook over low heat, stirring, for 1 minute until butter melts and glaze is smooth.</p></li>
+<li class="step"><span class="step-num">3</span><p>Add <span class="ing-ref">cooked carrots</span> and toss to coat. Heat through 1–2 minutes and serve.</p></li>
+</ol>
+
+</section>
+</div>
+<footer class="recipe-foot">
+<p class="notes"><strong>Notes:</strong> Steam or boil carrots until just tender before glazing — do not overcook or they will turn mushy in the glaze.</p>
+<p class="source">From the Mannsfeldt family recipe box · Dinnerclub recipe card · standard format v2 · stored for offline and mobile reference.</p>
+</footer>
+</article>
+<script>
+(function(){
+var scaleButtons=document.querySelectorAll('.scale-btn');
+var servingsEl=document.getElementById('servings-value');
+var servingsBase=servingsEl?parseFloat(servingsEl.dataset.servingsBase):null;
+function decimalToFraction(v){
+  if(v<=0)return'0';
+  var w=Math.floor(v+1e-9),r=v-w,e=Math.round(r*8);
+  if(e===8){w+=1;e=0;}
+  var m={1:'1/8',2:'1/4',3:'3/8',4:'1/2',5:'5/8',6:'3/4',7:'7/8'};
+  var f=m[e]||'';
+  if(w===0&&f)return f;
+  if(w>0&&f)return w+' '+f;
+  return String(w);
+}
+function applyScale(factor){
+  document.querySelectorAll('.ingredient').forEach(function(li){
+    var a=parseFloat(li.dataset.amount),u=li.dataset.unit,up=li.dataset.unitPlural||u;
+    var w=parseFloat(li.dataset.weight),wu=li.dataset.weightUnit||'g';
+    var sa=a*factor,sw=Math.max(1,Math.round(w*factor));
+    li.querySelector('.qty').innerHTML=decimalToFraction(sa)+' '+(sa>1?up:u)+' <span class="weight">('+sw+' '+wu+')</span>';
+  });
+  if(servingsEl&&servingsBase!==null){
+    var ss=servingsBase*factor;
+    servingsEl.textContent=(ss%1===0)?ss:decimalToFraction(ss);
+  }
+}
+scaleButtons.forEach(function(btn){
+  btn.addEventListener('click',function(){
+    scaleButtons.forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    applyScale(parseFloat(btn.dataset.scale));
+  });
+});
+})();
+</script>
+</body>
+</html>
