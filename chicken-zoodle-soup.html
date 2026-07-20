@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chicken Zoodle Soup — Recipe Card</title>
+<!-- Standard Recipe Format v2 -->
+<style>
+  :root {
+    --paper: #F3F4EF;
+    --paper-panel: #EAE7DC;
+    --ink: #2B2A28;
+    --ink-soft: #6B675E;
+    --rule: #D6D2C4;
+    --herb: #3F5D4A;
+    --herb-soft: #E4EAE3;
+    --spice: #A8722E;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .recipe { max-width: 980px; margin: 0 auto; padding: 40px 24px 64px; }
+  .recipe-head { border-bottom: 2px solid var(--ink); padding-bottom: 24px; margin-bottom: 32px; }
+
+  h1 {
+    margin: 0 0 8px;
+    font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .dek { margin: 0 0 20px; max-width: 60ch; color: var(--ink-soft); font-size: 1.02rem; }
+
+  .recipe-photo { margin: 0 0 20px; border-radius: 6px; overflow: hidden; background: var(--paper-panel); }
+  .recipe-photo img { display: block; width: 100%; max-height: 360px; object-fit: cover; }
+  .recipe-photo figcaption { padding: 8px 14px; font-size: 0.82rem; color: var(--ink-soft); }
+
+  .meta-bar { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 20px; padding: 0; }
+  .meta-bar li { display: flex; flex-direction: column; gap: 2px; padding: 8px 16px; background: var(--paper-panel); border-radius: 3px; min-width: 84px; }
+  .meta-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .meta-value { font-family: "SF Mono", "Consolas", monospace; font-size: 0.92rem; font-weight: 600; }
+
+  .equipment { margin: 0 0 20px; }
+  .equipment-label { margin: 0 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+  .equipment-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+  .equipment-list li {
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 14px; background: var(--paper-panel);
+    border: 1px solid var(--rule); border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .equipment-list li::before { content: "\2014"; color: var(--herb); font-weight: 700; }
+
+  .scale-toggle-wrap { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .scale-toggle-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); font-weight: 600; }
+  .scale-toggle { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; }
+  .scale-btn { appearance: none; border: none; background: transparent; padding: 8px 18px; font-family: inherit; font-size: 0.85rem; font-weight: 600; color: var(--ink); cursor: pointer; transition: background 0.15s ease, color 0.15s ease; }
+  .scale-btn + .scale-btn { border-left: 1.5px solid var(--ink); }
+  .scale-btn.active { background: var(--ink); color: var(--paper); }
+  .scale-btn:focus-visible { outline: 2px solid var(--herb); outline-offset: -2px; }
+
+  .recipe-body { display: grid; grid-template-columns: minmax(240px, 34%) 1fr; gap: 8px 48px; align-items: start; }
+  .recipe-body h2 { margin: 0 0 16px; font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif; font-size: 1.3rem; font-weight: 600; }
+
+  .ingredients { border-right: 1px solid var(--rule); padding-right: 32px; position: sticky; top: 24px; }
+  .group-label { margin: 20px 0 8px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--herb); font-weight: 700; }
+  .group-label:first-of-type { margin-top: 0; }
+
+  ul.ingredient-list { list-style: none; margin: 0 0 8px; padding: 0; }
+  .ingredient { display: flex; align-items: baseline; gap: 12px; padding: 7px 0; border-bottom: 1px dashed var(--rule); }
+  .ingredient .qty { flex: 0 0 auto; min-width: 132px; font-family: "SF Mono", "Consolas", monospace; font-size: 0.86rem; font-weight: 600; }
+  .ingredient .qty .weight { color: var(--spice); font-weight: 500; }
+  .ingredient .name { font-size: 0.95rem; }
+
+  ol.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  .step-group-label { margin: 24px 0 10px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--herb); font-weight: 700; }
+  .step-group-label:first-of-type { margin-top: 0; }
+  .step { counter-increment: step; display: flex; gap: 16px; margin-bottom: 20px; }
+  .step-num { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 50%; background: var(--herb); color: var(--herb-soft); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; }
+  .step p { margin: 2px 0 0; }
+  .ing-ref { font-weight: 600; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 2px; }
+
+  .recipe-foot { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 0.88rem; }
+  .recipe-foot .notes { margin: 0 0 8px; color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .recipe-body { grid-template-columns: 1fr; }
+    .ingredients { border-right: none; border-bottom: 2px solid var(--ink); padding-right: 0; padding-bottom: 24px; margin-bottom: 24px; position: static; }
+    .meta-bar li { min-width: 72px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .scale-toggle-wrap { display: none; }
+    .ingredients { position: static; border-right: 1px solid #999; }
+  }
+</style>
+</head>
+<body>
+
+<article class="recipe" id="recipe">
+
+  <header class="recipe-head">
+    <h1>Chicken Zoodle Soup</h1>
+    <p class="dek">A light, low-carb take on chicken noodle soup — spiralized zucchini stands in for the noodles in a quick, veggie-packed broth.</p>
+
+    <figure class="recipe-photo">
+      <img src="https://thatlowcarblife.com/wp-content/uploads/2018/08/low-carb-chicken-soup.jpg" alt="Chicken zoodle soup in a white bowl"
+           onerror="this.closest('figure').remove()">
+    </figure>
+
+    <ul class="meta-bar">
+      <li><span class="meta-label">Prep</span><span class="meta-value">15 min</span></li>
+      <li><span class="meta-label">Cook</span><span class="meta-value">15 min</span></li>
+      <li><span class="meta-label">Total</span><span class="meta-value">30 min</span></li>
+      <li><span class="meta-label">Yield</span><span class="meta-value">6 bowls</span></li>
+      <li><span class="meta-label">Servings</span><span class="meta-value" id="servings-value" data-servings-base="6">6</span></li>
+    </ul>
+
+    <div class="equipment">
+      <p class="equipment-label">Equipment</p>
+      <ul class="equipment-list">
+        <li>Large Dutch oven or stock pot</li>
+        <li>Spiralizer</li>
+      </ul>
+    </div>
+
+    <div class="scale-toggle-wrap">
+      <span class="scale-toggle-label">Scale recipe</span>
+      <div class="scale-toggle" role="group" aria-label="Recipe scale">
+        <button type="button" class="scale-btn" data-scale="0.5">Half</button>
+        <button type="button" class="scale-btn active" data-scale="1">1×</button>
+        <button type="button" class="scale-btn" data-scale="2">Double</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="recipe-body">
+
+    <section class="ingredients" aria-label="Ingredients">
+      <h2>Ingredients</h2>
+
+      <ul class="ingredient-list">
+        <li class="ingredient" data-amount="2" data-unit="tbsp" data-unit-plural="tbsp" data-weight="28" data-weight-unit="g">
+          <span class="qty">2 tbsp <span class="weight">(28 g)</span></span>
+          <span class="name">olive oil</span>
+        </li>
+        <li class="ingredient" data-amount="0.5" data-unit="" data-unit-plural="" data-weight="75" data-weight-unit="g">
+          <span class="qty">1/2 <span class="weight">(75 g)</span></span>
+          <span class="name">sweet onion, diced</span>
+        </li>
+        <li class="ingredient" data-amount="3" data-unit="stalk" data-unit-plural="stalks" data-weight="120" data-weight-unit="g">
+          <span class="qty">3 stalks <span class="weight">(120 g)</span></span>
+          <span class="name">celery, diced</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="" data-unit-plural="" data-weight="120" data-weight-unit="g">
+          <span class="qty">1 <span class="weight">(120 g)</span></span>
+          <span class="name">red bell pepper, diced</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="clove" data-unit-plural="cloves" data-weight="3" data-weight-unit="g">
+          <span class="qty">1 clove <span class="weight">(3 g)</span></span>
+          <span class="name">garlic, minced</span>
+        </li>
+        <li class="ingredient" data-amount="6" data-unit="cup" data-unit-plural="cups" data-weight="1440" data-weight-unit="g">
+          <span class="qty">6 cups <span class="weight">(1440 g)</span></span>
+          <span class="name">chicken stock</span>
+        </li>
+        <li class="ingredient" data-amount="2" data-unit="cup" data-unit-plural="cups" data-weight="280" data-weight-unit="g">
+          <span class="qty">2 cups <span class="weight">(280 g)</span></span>
+          <span class="name">cooked chicken, shredded</span>
+        </li>
+        <li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="1" data-weight-unit="g">
+          <span class="qty">1/2 tsp <span class="weight">(1 g)</span></span>
+          <span class="name">dried oregano</span>
+        </li>
+        <li class="ingredient" data-amount="0.5" data-unit="tsp" data-unit-plural="tsp" data-weight="1" data-weight-unit="g">
+          <span class="qty">1/2 tsp <span class="weight">(1 g)</span></span>
+          <span class="name">dried basil</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="tsp" data-unit-plural="tsp" data-weight="6" data-weight-unit="g">
+          <span class="qty">1 tsp <span class="weight">(6 g)</span></span>
+          <span class="name">salt</span>
+        </li>
+        <li class="ingredient" data-amount="1" data-unit="tsp" data-unit-plural="tsp" data-weight="2" data-weight-unit="g">
+          <span class="qty">1 tsp <span class="weight">(2 g)</span></span>
+          <span class="name">ground black pepper</span>
+        </li>
+        <li class="ingredient" data-amount="4" data-unit="large" data-unit-plural="large" data-weight="800" data-weight-unit="g">
+          <span class="qty">4 large <span class="weight">(800 g)</span></span>
+          <span class="name">zucchini</span>
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="instructions" aria-label="Instructions">
+      <h2>Instructions</h2>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <p>Heat the <span class="ing-ref">olive oil</span> in a large Dutch oven or stock pot over medium heat.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <p>Add the <span class="ing-ref">onion</span>, <span class="ing-ref">celery</span>, <span class="ing-ref">bell pepper</span>, and <span class="ing-ref">garlic</span> and cook, stirring often, until softened, about 5 minutes.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <p>Pour in the <span class="ing-ref">chicken stock</span> and add the <span class="ing-ref">chicken</span>, <span class="ing-ref">oregano</span>, <span class="ing-ref">basil</span>, <span class="ing-ref">salt</span>, and <span class="ing-ref">pepper</span>.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">4</span>
+          <p>Spiralize the <span class="ing-ref">zucchini</span> into noodles and add them to the pot.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">5</span>
+          <p>Bring to a boil, then reduce to a simmer. Simmer, stirring occasionally, about 10 minutes, until the zoodles are as tender as you like.</p>
+        </li>
+        <li class="step">
+          <span class="step-num">6</span>
+          <p>Taste, adjust the seasoning, and serve hot.</p>
+        </li>
+      </ol>
+
+    </section>
+
+  </div>
+
+  <footer class="recipe-foot">
+    <p class="notes"><strong>Notes:</strong> Rotisserie chicken makes quick work of the shredded chicken. Zoodles soften fast and can turn mushy as leftovers — if meal-prepping, spiralize and add them only to the portion you’re serving. Red bell pepper stands in for the usual carrots to keep the carbs low.</p>
+    <p class="source">Adapted from Karly Campbell, That Low Carb Life · standard format v2 · stored for offline and mobile reference.</p>
+  </footer>
+
+</article>
+
+<script>
+  (function () {
+    var recipe = document.getElementById('recipe');
+    var scaleButtons = document.querySelectorAll('.scale-btn');
+    var servingsEl = document.getElementById('servings-value');
+    var servingsBase = servingsEl ? parseFloat(servingsEl.dataset.servingsBase) : null;
+
+    function decimalToFraction(value) {
+      if (value <= 0) return '0';
+      var whole = Math.floor(value + 1e-9);
+      var remainder = value - whole;
+      var eighths = Math.round(remainder * 8);
+      if (eighths === 8) { whole += 1; eighths = 0; }
+      var fracMap = {1: '1/8', 2: '1/4', 3: '3/8', 4: '1/2', 5: '5/8', 6: '3/4', 7: '7/8'};
+      var fracStr = fracMap[eighths] || '';
+      if (whole === 0 && fracStr) return fracStr;
+      if (whole > 0 && fracStr) return whole + ' ' + fracStr;
+      return String(whole);
+    }
+
+    function applyScale(factor) {
+      document.querySelectorAll('.ingredient').forEach(function (li) {
+        var amount = parseFloat(li.dataset.amount);
+        var unit = li.dataset.unit;
+        var unitPlural = li.dataset.unitPlural || unit;
+        var weight = parseFloat(li.dataset.weight);
+        var weightUnit = li.dataset.weightUnit || 'g';
+
+        var scaledAmount = amount * factor;
+        var displayAmount = decimalToFraction(scaledAmount);
+        var unitWord = scaledAmount > 1 ? unitPlural : unit;
+
+        var scaledWeight = Math.max(1, Math.round(weight * factor));
+
+        var qtyEl = li.querySelector('.qty');
+        var unitPart = unitWord ? (' ' + unitWord) : '';
+        qtyEl.innerHTML = displayAmount + unitPart +
+          ' <span class="weight">(' + scaledWeight + ' ' + weightUnit + ')</span>';
+      });
+
+      if (servingsEl && servingsBase !== null) {
+        var scaledServings = servingsBase * factor;
+        servingsEl.textContent = (scaledServings % 1 === 0) ? scaledServings : decimalToFraction(scaledServings);
+      }
+    }
+
+    scaleButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        scaleButtons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        applyScale(parseFloat(btn.dataset.scale));
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
